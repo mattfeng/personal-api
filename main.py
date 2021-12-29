@@ -12,10 +12,11 @@ def create_app():
     load_dotenv()
     user = os.environ.get("DB_USER")
     pwd = os.environ.get("DB_PASS")
+    host = os.environ.get("DB_HOST")
     db_name = os.environ.get("DB_DATABASE")
 
     # get connection to database
-    mongo_uri = f"mongodb://{user}:{pwd}@localhost:27017/{db_name}?authSource=admin"
+    mongo_uri = f"mongodb://{user}:{pwd}@{host}:27017/{db_name}?authSource=admin"
     client = MongoClient(mongo_uri)
     db = client[db_name]
 

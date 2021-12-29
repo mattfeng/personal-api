@@ -8,6 +8,16 @@ services:
     volumes:
       - ./db:/data/db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
-      MONGO_INITDB_DATABASE: db
+      MONGO_INITDB_ROOT_USERNAME: "${DB_USER}"
+      MONGO_INITDB_ROOT_PASSWORD: "${DB_PASS}"
+      MONGO_INITDB_DATABASE: "${DB_DATABASE}"
+  api:
+    image: mattfeng/personal-api:0.1.0
+    container_name: personal-api
+    ports:
+      - 4000:4000
+    environment:
+      DB_USER: "${DB_USER}"
+      DB_PASS: "${DB_PASS}"
+      DB_DATABASE: "${DB_DATABASE}"
+      DB_HOST: "${DB_HOST}"
