@@ -41,6 +41,18 @@ def create_app():
         resp = requests.get(TARGET)
         return jsonify(load(resp.text, Loader=Loader))
 
+    @app.route("/journals")
+    def journals():
+        TARGET = "https://raw.githubusercontent.com/mattfeng/reading-group/main/journals.yaml"
+        resp = requests.get(TARGET)
+        return jsonify(load(resp.text, Loader=Loader))
+
+    @app.route("/books")
+    def books():
+        TARGET = "https://raw.githubusercontent.com/mattfeng/reading-group/main/books.yaml"
+        resp = requests.get(TARGET)
+        return jsonify(load(resp.text, Loader=Loader))
+
     return app
 
 if __name__ == "__main__":
