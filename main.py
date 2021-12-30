@@ -24,7 +24,7 @@ def create_app():
 
     # create flask app
     app = Flask(__name__)
-    CORS(app, origins=["http://localhost:8001", "https://mattfeng.tech"])
+    CORS(app, origins=["http://localhost:8001", "http://mattfeng.tech", "https://mattfeng.tech"])
 
     @app.route("/")
     def home():
